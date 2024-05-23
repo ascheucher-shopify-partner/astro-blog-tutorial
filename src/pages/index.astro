@@ -1,5 +1,6 @@
 ---
-
+let baseUrl = import.meta.env.BASE_URL;
+baseUrl = baseUrl.startsWith('/') ? baseUrl.slice(1) : baseUrl;
 ---
 
 <html lang="en">
@@ -11,8 +12,8 @@
 		<title>Astro</title>
 	</head>
 	<body>
-    <a href=`${Astro.site}/`>Home</a>
-    <a href=`${Astro.site}/about`>About</a>
+		<a href=`${Astro.site}${baseUrl}`>Home</a>
+    <a href=`${Astro.site}${baseUrl}/about`>About</a>
 		<h1>Astro - Blub</h1>
 	</body>
 </html>
