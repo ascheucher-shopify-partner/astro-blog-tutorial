@@ -1,0 +1,1 @@
+import BlogPost from "../components/BlogPost.astro";
