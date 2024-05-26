@@ -1,21 +1,22 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
+let baseUrl = import.meta.env.BASE_URL;
+
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+  <p>{frontmatter.pubDate.toISOString().slice(0, 10)}</p>
   <p><em>{frontmatter.description}</em></p>
   <p>Written by: {frontmatter.author}</p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+  <img src={frontmatter.image.url} width="600" alt={frontmatter.image.alt} />
   <slot />
   <div class="tags">
     {
       frontmatter.tags.map((tag: any) => (
         <p class="tag">
-          {/* <a href={`${baseUrl}tags/${tag}`}>{tag}</a> */}
-          <a href={`/astro-blog-tutorial/tags/${tag}/`}>{tag}</a>
+          <a href={`${baseUrl}/tags/${tag}`}>{tag}</a>
         </p>
       ))
     }

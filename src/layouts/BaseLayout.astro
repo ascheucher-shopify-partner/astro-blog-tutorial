@@ -3,9 +3,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
-
-let baseUrl = import.meta.env.BASE_URL;
-baseUrl = baseUrl.startsWith('/') ? baseUrl.slice(1) : baseUrl;
 ---
 <html lang="en">
   <head>
