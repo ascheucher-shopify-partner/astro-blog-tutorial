@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { fade } from "astro:transitions";
 
 let baseUrl = import.meta.env.BASE_URL;
 
@@ -8,8 +9,8 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout pageTitle={frontmatter.title}>
   <p>{frontmatter.pubDate.toISOString().slice(0, 10)}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
+  <p transition:animate={fade({ duration: '2s' })}><em>{frontmatter.description}</em></p>
+  <p>Written by: <a href=`${baseUrl}/about`>{frontmatter.author}</a></p>
   <img src={frontmatter.image.url} width="600" alt={frontmatter.image.alt} />
   <slot />
   <div class="tags">

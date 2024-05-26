@@ -1,9 +1,12 @@
 ---
 let baseUrl = import.meta.env.BASE_URL;
 ---
-<div  class="nav-links">
-  <a href=`${baseUrl}`>Home</a>
-  <a href=`${baseUrl}/about`>About</a>
-  <a href=`${baseUrl}/blog`>Blog</a>
-  <a href=`${baseUrl}/tags`>Tags</a>
+
+<div transition:animate="slide">
+  <div class="nav-links">
+    <a href=`${baseUrl}`>Home</a>
+    <a href=`${baseUrl}/about` data-astro-reload>About</a>
+    <a href=`${baseUrl}/blog`>Blog</a>
+    <a href=`${baseUrl}/tags`>Tags</a>
+  </div>
 </div>
