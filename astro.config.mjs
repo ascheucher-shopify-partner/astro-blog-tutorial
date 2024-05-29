@@ -8,5 +8,16 @@ export default defineConfig({
   site: 'https://ascheucher-shopify-partner.github.io', // TODO change this to the real domain for the sitemap
   base: '/astro-blog-tutorial',
   trailingSlash: "never",
-  integrations: [preact(), sitemap()]
+  integrations: [
+    preact(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          'en': 'en',
+          'de': 'de'
+        },
+      }
+    })
+  ]
 });

@@ -23,6 +23,7 @@ console.log(
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{pageTitle}</title>
+    <slot name="head-end" />
   </head>
   <body>
     <Header lang={lang} langSwitchPath={langSwitchPath} />

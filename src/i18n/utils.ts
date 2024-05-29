@@ -56,7 +56,7 @@ export type PostsByLang<Post> = {
   }
 }
 
-export function getPostsByLang(posts: Post[]) {
+export function getPostsByIdAndLang(posts: Post[]) {
   const postsByLang: PostsByLang<Post> = {}
   posts.forEach((post) => {
     const postId = post.data.id

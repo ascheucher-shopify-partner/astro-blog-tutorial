@@ -3,8 +3,9 @@ import BaseLayout from "./BaseLayout.astro";
 
 let baseUrl = import.meta.env.BASE_URL;
 
-const { frontmatter, lang, langSwitchPath } = Astro.props;
-// TODO add a canonical link
+const { frontmatter, lang, langSwitchPath, hrefLangLinks } = Astro.props;
+// TODO create hreflang links for blog posts, which have different file names for the different languages. Same named posts are handled in the sitemap-*.xml files.
+// TODO add a canonical link?
 // TODO how to translate tags? just write the keys in the frontmatter and translate them in the template? use keys in slugs?
 // TODO add date formatting for the blog post frontmatter: https://docs.astro.build/en/recipes/i18n/#formatting-dates
 ---
@@ -14,6 +15,16 @@ const { frontmatter, lang, langSwitchPath } = Astro.props;
   lang={lang}
   langSwitchPath={langSwitchPath}
 >
+  {
+    hrefLangLinks.map((link: any) => (
+      <link
+        slot="head-end"
+        rel="alternate"
+        hreflang={link.lang}
+        href={link.href}
+      />
+    ))
+  }
   <p>{frontmatter.pubDate.toISOString().slice(0, 10)}</p>
   <p><em>{frontmatter.description}</em></p>
   <p>Written by: {frontmatter.author}</p>

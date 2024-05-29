@@ -5,7 +5,7 @@ import { languages } from "../../../i18n/ui";
 import {
   filterPostsForLang,
   otherLanguage,
-  getPostsByLang,
+  getPostsByIdAndLang,
 } from "../../../i18n/utils";
 
 export async function getStaticPaths() {
@@ -15,26 +15,51 @@ export async function getStaticPaths() {
   const paths = supportedLanguages
     .map((selectedLang: string) => {
       return filterPostsForLang(blogPosts, selectedLang).map((post) => {
+        let createLinkRelHreflang = false;
+
         const [, ...slug] = post.slug.split("/");
         const lang = selectedLang;
         const langSlug = slug.join("/") || undefined;
+        const langPath = [lang, "ecommerce-insights", langSlug].join("/");
 
         // get slug for translated blog posts
         const otherLang = otherLanguage(lang);
-        const postsByLang = getPostsByLang(blogPosts);
+        const postsByIdAndLang = getPostsByIdAndLang(blogPosts);
+        // there is no translation available. Let's use this language's slug for the translation path
         let fullOtherLangSlug = [otherLang, "ecommerce-insights", ...slug];
         // If the post has a translation in the other language, overwrite with that slug
-        if (post.data.id === postsByLang[post.data.id]?.[otherLang]?.data.id) {
+        if (
+          post.data.id === postsByIdAndLang[post.data.id]?.[otherLang]?.data.id
+        ) {
           const [, ...otherLangSlugArr] =
-            postsByLang[post.data.id][otherLang].slug.split("/");
+            postsByIdAndLang[post.data.id][otherLang].slug.split("/");
           fullOtherLangSlug = [
             otherLang,
             "ecommerce-insights",
             ...otherLangSlugArr,
           ];
+          // if post file names are different, then we need to create the <link rel="alternate" hreflang="x" href="y"> tags
+          if (langSlug !== otherLangSlugArr.join("/")) {
+            createLinkRelHreflang = true;
+          }
         }
         const otherLangPath = fullOtherLangSlug.join("/");
 
+        // add the link rel="alternate" hreflang="x" href="y" tags for SEO if neccessary
+        let hrefLangLinks = [];
+        if (createLinkRelHreflang) {
+          const baseUrl = import.meta.env.BASE_URL;
+          const cleanSite = Astro.site?.toString().slice(0, -1);
+
+          hrefLangLinks.push({
+            lang: lang,
+            href: `${cleanSite}${baseUrl}/${langPath}`,
+          });
+          hrefLangLinks.push({
+            lang: otherLang,
+            href: `${cleanSite}${baseUrl}/${otherLangPath}`,
+          });
+        }
         return {
           params: {
             lang,
@@ -42,7 +67,9 @@ export async function getStaticPaths() {
           },
           props: {
             post,
+            langPath: langPath,
             otherLangPath: otherLangPath,
+            hrefLangLinks: hrefLangLinks,
           },
         };
       });
@@ -53,7 +80,7 @@ export async function getStaticPaths() {
 }
 
 const { lang, slug } = Astro.params;
-const { post, otherLangPath } = Astro.props;
+const { post, langPath, otherLangPath, hrefLangLinks } = Astro.props;
 const { Content } = await post.render();
 
 // TODO add a google translate button for blog posts, where ther is no translation available: https://www.geeksforgeeks.org/add-google-translate-button-webpage/
@@ -63,6 +90,7 @@ const { Content } = await post.render();
   frontmatter={post.data}
   lang={lang}
   langSwitchPath={otherLangPath}
+  hrefLangLinks={hrefLangLinks}
 >
   <Content />
 </MarkdownPostLayout>
