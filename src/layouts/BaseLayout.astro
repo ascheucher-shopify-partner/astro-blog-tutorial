@@ -9,7 +9,9 @@ const { lang, langSwitchPath, pageTitle } = Astro.props;
 console.log(
   `BaseLayout - lang: ${lang}, otherLangPath: ${langSwitchPath}, pageTitle: ${pageTitle}`
 );
+// TODO change the favicon to the logo
 // TODO add a canonical link
+// TODO add href links
 // TODO remove logging for props
 ---
 
@@ -19,6 +21,7 @@ console.log(
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{pageTitle}</title>
   </head>
   <body>
