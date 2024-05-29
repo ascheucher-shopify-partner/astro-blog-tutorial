@@ -1,0 +1,27 @@
+---
+import { defaultLang, languages } from "../i18n/ui";
+const baseUrl = import.meta.env.BASE_URL;
+const redirectUrl = `${baseUrl}/${defaultLang}`;
+console.log(`Redirecting to ${redirectUrl}...`);
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>SaaSQuadrat e.U.</title>
+    <meta http-equiv="refresh" content={`1;url=${redirectUrl}`} />
+  </head>
+  <body>
+    <h1>
+      Redirecting to the {`${languages[defaultLang]}`} version of the site...
+    </h1>
+    <p>
+      If this doesn't happen automatically, <a href={`/${defaultLang}`}
+        >please click this link</a
+      >.
+    </p>
+  </body>
+</html>

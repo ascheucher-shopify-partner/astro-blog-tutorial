@@ -4,6 +4,9 @@ import BaseLayout from "./BaseLayout.astro";
 let baseUrl = import.meta.env.BASE_URL;
 
 const { frontmatter, lang, langSwitchPath } = Astro.props;
+// TODO add a canonical link
+// TODO how to translate tags? just write the keys in the frontmatter and translate them in the template? use keys in slugs?
+// TODO add date formatting for the blog post frontmatter: https://docs.astro.build/en/recipes/i18n/#formatting-dates
 ---
 
 <BaseLayout
