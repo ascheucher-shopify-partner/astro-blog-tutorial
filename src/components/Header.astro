@@ -1,12 +1,18 @@
 ---
-import Hamburger from '../components/Hamburger.astro';
-import Navigation from '../components/Navigation.astro';
-import ThemeIcon from './ThemeIcon.astro';
+import Hamburger from "../components/Hamburger.astro";
+import Navigation from "../components/Navigation.astro";
+import LangSwitcher from "./LangSwitcher.astro";
+import LightDarkModeSwitchIcon from "./LightDarkModeSwitchIcon.astro";
+
+const { lang, langSwitchPath } = Astro.props;
+console.log(`Header - lang: ${lang}, langSwitchPath: ${langSwitchPath}`);
 ---
+
 <header>
   <nav>
+    <LightDarkModeSwitchIcon />
     <Hamburger />
-    <ThemeIcon />
-    <Navigation />
+    <Navigation lang={lang} />
+    <LangSwitcher lang={lang} langSwitchPath={langSwitchPath} />
   </nav>
 </header>

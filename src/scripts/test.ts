@@ -1,1 +1,1 @@
-import BlogPost from "../components/BlogPost.astro";
+import BlogPost from "../components/BlogPostLi.astro";

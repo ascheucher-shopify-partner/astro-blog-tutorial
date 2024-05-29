@@ -1,0 +1,35 @@
+---
+import { languages } from "../../i18n/ui";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Greeting from "../../components/Greeting";
+import { otherLanguage } from "../../i18n/utils";
+const pageTitle = "SaaSQuadrat";
+
+export async function getStaticPaths() {
+  const langKeys = Object.keys(languages);
+  const paths = langKeys.map((lk) => {
+    const otherLang = otherLanguage(lk);
+    return {
+      params: {
+        lang: lk,
+      },
+      props: {
+        otherLangPath: `${otherLang}`,
+      },
+    };
+  });
+
+  return paths;
+}
+const { lang } = Astro.params;
+const { otherLangPath } = Astro.props;
+---
+
+<BaseLayout lang={lang} langSwitchPath={otherLangPath} pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+  <Greeting
+    client:load
+    messages={["Hi", "Hello", "Howdy", "Hey there", "Griazi", "Servus"]}
+  />
+</BaseLayout>

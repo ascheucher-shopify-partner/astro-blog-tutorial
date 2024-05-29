@@ -57,6 +57,30 @@ h1 {
   background-color: #ff9776;
 }
 
+.language-switch {
+  width: 100%;
+  top: 5rem;
+  left: 48px;
+  background-color: #ff9776;
+  /* display: none; */
+  margin: 0;
+}
+
+.language-switch a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.language-switch a:hover,
+.language-switch a:focus {
+  background-color: #ff9776;
+}
+
 .expanded {
   display: unset;
 }

@@ -1,0 +1,15 @@
+---
+import { otherLanguage } from "../i18n/utils";
+
+let baseUrl = import.meta.env.BASE_URL;
+
+const { lang, langSwitchPath } = Astro.props;
+const otherLang: string = otherLanguage(lang);
+console.log(
+  `LangSwitcher - lang: ${lang}, otherLang: ${otherLang}, langSwitchPath: ${langSwitchPath}`
+);
+---
+
+<div class="language-switch">
+  <a href=`${baseUrl}/${langSwitchPath}`>{otherLang.toUpperCase()}</a>
+</div>

@@ -1,4 +1,5 @@
 ---
+id: 0
 title: "Learning About Markdown in Astro"
 author: Astro Learner
 pubDate: 2022-08-08
@@ -9,10 +10,6 @@ image:
 
 tags: ["astro", "learning in public"]
 ---
-
-## Layout
-
-**This post uses a different Layout. Hence, the navigation is missing**
 
 ## Content
 

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPostLi.astro";
 
 let baseUrl = import.meta.env.BASE_URL;
 
@@ -14,7 +14,7 @@ const pageTitle = "Home Page";
   <ul>
     {
       allPosts.map((post) => (
-        <BlogPost url={`${baseUrl}/posts/${post.slug}`} title={post.data.title} />
+        <BlogPost url={`${baseUrl}/ecommerce-insights/${post.slug}`} title={post.data.title} />
       ))
     }
   </ul>

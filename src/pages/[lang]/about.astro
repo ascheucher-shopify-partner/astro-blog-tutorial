@@ -1,6 +1,29 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { languages } from "../../i18n/ui";
+import { otherLanguage } from "../../i18n/utils";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
 const pageTitle = "About Me";
+
+export async function getStaticPaths() {
+  const langKeys = Object.keys(languages);
+  const paths = langKeys.map((lk) => {
+    const otherLang = otherLanguage(lk);
+    return {
+      params: {
+        lang: lk,
+      },
+      props: {
+        otherLangPath: `${otherLang}/about`,
+      },
+    };
+  });
+
+  return paths;
+}
+const { lang } = Astro.params;
+const { otherLangPath } = Astro.props;
 
 const identity = {
   firstName: "Sarah",
@@ -18,9 +41,11 @@ const goal = 3;
 const skillColor = "navy";
 const fontWeight = "bold";
 const textCase = "uppercase";
+
+console.log(`about - lang: ${lang}, otherLangPath: ${otherLangPath}`);
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout lang={lang} langSwitchPath={otherLangPath} pageTitle={pageTitle}>
   <style define:vars={{ skillColor, fontWeight, textCase }}>
     h1 {
       color: purple;

@@ -1,9 +1,12 @@
 ---
 let baseUrl = import.meta.env.BASE_URL;
+
+const { lang } = Astro.props;
 ---
-<div  class="nav-links">
-  <a href=`${baseUrl}`>Home</a>
-  <a href=`${baseUrl}/about`>About</a>
-  <a href=`${baseUrl}/blog`>Blog</a>
-  <a href=`${baseUrl}/tags`>Tags</a>
+
+<div class="nav-links">
+  <a href=`${baseUrl}/${lang}`>Home</a>
+  <a href=`${baseUrl}/${lang}/about`>About</a>
+  <a href=`${baseUrl}/${lang}/ecommerce-insights`>Shopify Insights</a>
+  <a href=`${baseUrl}/${lang}/ecommerce-insights/tags`>Tags</a>
 </div>
