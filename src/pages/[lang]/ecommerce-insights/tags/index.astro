@@ -2,7 +2,10 @@
 import { languages } from "@lib/i18n/ui";
 import { otherLanguage } from "@lib/i18n/utils";
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+
 const pageTitle = "Tag Index";
 
 export async function getStaticPaths() {
@@ -14,7 +17,7 @@ export async function getStaticPaths() {
         lang: lk,
       },
       props: {
-        otherLangPath: `${otherLang}/ecommerce-insights`,
+        otherLangPath: `${getRelativeLocaleUrl(otherLang)}/ecommerce-insights`,
       },
     };
   });
@@ -39,7 +42,9 @@ const { otherLangPath } = Astro.props;
     {
       uniqueTags.map((tag) => (
         <p class="tag">
-          <a href={`${baseUrl}/${lang}/ecommerce-insights/tags/${tag}`}>
+          <a
+            href={`${getRelativeLocaleUrl(lang)}/ecommerce-insights/tags/${tag}`}
+          >
             {tag}
           </a>
         </p>

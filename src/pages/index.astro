@@ -1,12 +1,15 @@
 ---
+// This page is redundant, as Astro does the redirect based on the routing redirectToDefaultLocale configuration.
+
 import { defaultLang, languages } from "@lib/i18n/ui";
 const baseUrl = import.meta.env.BASE_URL;
 const redirectUrl = `${baseUrl}/${defaultLang}`;
 console.log(`Redirecting to ${redirectUrl}...`);
 
-// TODO use the browser's preferred language to redirect to the correct version: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#using_the_browsers_preferred_language
-// TODO implement this tips: https://www.weglot.com/guides/website-internationalization
-// TODO paging for the blog posts
+// TODO implement the TS type tips from the astro documentation: https://docs.astro.build/en/guides/typescript/#componentprops-type
+// TODO use client's browser requested language
+//        * https://docs.astro.build/en/reference/api-reference/#astropreferredlocale
+//        * https://docs.astro.build/en/guides/internationalization/#browser-language-detection
 ---
 
 <html>

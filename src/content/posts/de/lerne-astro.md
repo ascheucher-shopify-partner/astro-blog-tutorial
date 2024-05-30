@@ -8,7 +8,7 @@ image:
   url: "https://picsum.photos/800/130"
   alt: "Das ist ein dummy Bild."
 
-tags: ["astro", "learning in public"]
+tags: ["astro", "learning-in-public"]
 ---
 
 ## Inhalt

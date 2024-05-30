@@ -4,11 +4,11 @@ title: "Learning About Markdown in Astro"
 author: Astro Learner
 pubDate: 2022-08-08
 description: "Dummy description"
-image: 
+image:
   url: "https://picsum.photos/800/130"
   alt: "This is a dummy image."
 
-tags: ["astro", "learning in public"]
+tags: ["astro", "learning-in-public"]
 ---
 
 ## Content

@@ -1,9 +1,11 @@
 ---
 import { languages } from "@lib/i18n/ui";
-
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Greeting from "@components/Greeting";
 import { otherLanguage } from "@lib/i18n/utils";
+import { getRelativeLocaleUrl } from "astro/virtual-modules/i18n.js";
+
+import Greeting from "@components/Greeting";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
 const pageTitle = "SaaSQuadrat";
 
 export async function getStaticPaths() {
@@ -15,7 +17,7 @@ export async function getStaticPaths() {
         lang: lk,
       },
       props: {
-        otherLangPath: `${otherLang}`,
+        otherLangPath: `${getRelativeLocaleUrl(otherLang)}`,
       },
     };
   });

@@ -1,6 +1,7 @@
 ---
 import { languages } from "@lib/i18n/ui";
 import { otherLanguage } from "@lib/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
         lang: lk,
       },
       props: {
-        otherLangPath: `${otherLang}/about`,
+        otherLangPath: `${getRelativeLocaleUrl(otherLang)}/about`,
       },
     };
   });

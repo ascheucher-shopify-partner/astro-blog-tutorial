@@ -1,6 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
+import { getAbsoluteLocaleUrl, getRelativeLocaleUrl } from 'astro:i18n';
 import { ui, languages, defaultLang } from './ui';
-import type { Post } from '../content/config';
+import type { Post } from '@content/config';
 
 export function otherLanguage(lang: string) {
   const ls = Object.keys(languages);
@@ -56,7 +57,7 @@ export type PostsByLang<Post> = {
   }
 }
 
-export function getPostsByIdAndLang(posts: Post[]) {
+export function getPostsByIdAndLang(posts: Post[]): PostsByLang<Post> {
   const postsByLang: PostsByLang<Post> = {}
   posts.forEach((post) => {
     const postId = post.data.id
@@ -68,3 +69,42 @@ export function getPostsByIdAndLang(posts: Post[]) {
   })
   return postsByLang
 }
+
+export function needsHreflangLinks(langSlug: string, otherLangSlug: string | undefined) {
+  return langSlug !== otherLangSlug;
+}
+
+export function getHrefLangLinks(createLinkRelHreflang: boolean,
+  lang: string,
+  postSlug: string,
+  otherLang: string,
+  otherPostSlug: string | undefined,
+  infix: string
+): any[] {
+  if (!createLinkRelHreflang) {
+    return [];
+  }
+
+  return [
+    {
+      lang: lang,
+      href: getAbsoluteLocaleUrl(lang, postSlug)
+    },
+    {
+      lang: otherLang,
+      href: getAbsoluteLocaleUrl(otherLang, otherPostSlug)
+    },
+  ];
+};
+
+export function getPostSlug(post: Post): string {
+  const [, ...slug] = post.slug.split("/");
+  return slug.join("/");
+};
+
+export function getOtherLangPost(postsByIdAndLang: any, post: Post): Post {
+  const lang = post.id.split("/")[0]
+  const otherLang = otherLanguage(lang)
+  return postsByIdAndLang[post.data.id][otherLang]
+}
+

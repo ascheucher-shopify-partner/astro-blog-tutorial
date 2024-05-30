@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import { languages } from "@lib/i18n/ui";
+import { filterPostsForLang, otherLanguage } from "@lib/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import BlogPostLi from "@components/BlogPostLi.astro";
-import { filterPostsForLang, otherLanguage } from "@lib/i18n/utils";
 
 let baseUrl = import.meta.env.BASE_URL;
 
@@ -16,7 +18,7 @@ export async function getStaticPaths() {
         lang: lk,
       },
       props: {
-        otherLangPath: `${otherLang}/ecommerce-insights`,
+        otherLangPath: `${getRelativeLocaleUrl(otherLang)}/ecommerce-insights`,
       },
     };
   });
@@ -31,7 +33,6 @@ const { lang } = Astro.params;
 const { otherLangPath } = Astro.props;
 const allPosts = await getCollection("posts");
 const langPosts = filterPostsForLang(allPosts, lang);
-console.log(`posts - lang: ${lang}, otherLangPath: ${otherLangPath}`);
 ---
 
 <BaseLayout lang={lang} langSwitchPath={otherLangPath} pageTitle={pageTitle}>
@@ -40,10 +41,10 @@ console.log(`posts - lang: ${lang}, otherLangPath: ${otherLangPath}`);
     {
       langPosts.map((post) => {
         const postLang = post.id.split("/")[0];
-        const postSlagNoLang = post.slug.split("/")[1];
+        const postSlugNoLang = post.slug.split("/")[1];
         return (
           <BlogPostLi
-            url={`${baseUrl}/${lang}/ecommerce-insights/${postSlagNoLang}`}
+            url={`${getRelativeLocaleUrl(lang)}/ecommerce-insights/${postSlugNoLang}`}
             title={`${post.data.title} - ${postLang.toUpperCase()}`}
           />
         );
