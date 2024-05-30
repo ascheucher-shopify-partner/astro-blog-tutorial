@@ -4,8 +4,11 @@ import Navigation from "@components/Navigation.astro";
 import LangSwitcher from "./LangSwitcher.astro";
 import LightDarkModeSwitchIcon from "./LightDarkModeSwitchIcon.astro";
 
+interface Props {
+  lang: string;
+  langSwitchPath: string;
+}
 const { lang, langSwitchPath } = Astro.props;
-console.log(`Header - lang: ${lang}, langSwitchPath: ${langSwitchPath}`);
 ---
 
 <header>

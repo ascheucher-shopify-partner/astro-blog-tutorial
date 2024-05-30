@@ -5,10 +5,12 @@ import "@styles/global.css";
 
 const baseUrl = import.meta.env.BASE_URL;
 
+interface Props {
+  lang: string;
+  langSwitchPath: string;
+  pageTitle: string;
+}
 const { lang, langSwitchPath, pageTitle } = Astro.props;
-console.log(
-  `BaseLayout - lang: ${lang}, otherLangPath: ${langSwitchPath}, pageTitle: ${pageTitle}`
-);
 // TODO change the favicon to the logo
 // TODO remove logging for props
 // TODO add logging in papertrail or bugsnag for client run code

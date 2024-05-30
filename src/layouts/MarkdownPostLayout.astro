@@ -3,6 +3,16 @@ import BaseLayout from "./BaseLayout.astro";
 
 let baseUrl = import.meta.env.BASE_URL;
 
+interface HrefLangLink {
+  lang: string;
+  href: string;
+}
+interface Props {
+  frontmatter: any; // TODO fix type
+  lang: string;
+  langSwitchPath: string;
+  hrefLangLinks: HrefLangLink[];
+}
 const { frontmatter, lang, langSwitchPath, hrefLangLinks } = Astro.props;
 // TODO how to translate tags? just write the keys in the frontmatter and translate them in the template? use keys in slugs?
 // TODO add date formatting for the blog post frontmatter: https://docs.astro.build/en/recipes/i18n/#formatting-dates
