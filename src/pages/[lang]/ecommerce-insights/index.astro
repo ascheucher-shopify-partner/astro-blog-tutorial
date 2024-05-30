@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import { languages } from "@i18n/ui";
+import { languages } from "@lib/i18n/ui";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import BlogPostLi from "@components/BlogPostLi.astro";
-import { filterPostsForLang, otherLanguage } from "@i18n/utils";
+import { filterPostsForLang, otherLanguage } from "@lib/i18n/utils";
 
 let baseUrl = import.meta.env.BASE_URL;
 

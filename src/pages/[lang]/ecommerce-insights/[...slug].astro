@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import MarkdownPostLayout from "../../../layouts/MarkdownPostLayout.astro";
-import { languages } from "@i18n/ui";
+import { languages } from "@lib/i18n/ui";
 import {
   filterPostsForLang,
   otherLanguage,
   getPostsByIdAndLang,
-} from "@i18n/utils";
+} from "@lib/i18n/utils";
 
 export async function getStaticPaths() {
   const supportedLanguages = Object.keys(languages);
