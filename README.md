@@ -1,3 +1,27 @@
+# SaaSQuadrat Homepage / Blog Template
+
+## Features
+
+* i18n
+  * manual language switch de/en
+  * pages
+  * blog posts
+    * post without current lang versions will be listed & shown in the other language
+* Google / SEO optimisations
+  * hreflang attributes
+  * sitemap
+  * robots.txt
+* favicon
+* Blog
+  * markdown post
+  * 
+
+## Checks to run through
+
+* [i18n hreflang check](https://app.hreflang.org/)
+  * test with the finished online version. GitHub pages seem to do a 301 redirect from https://example.com/path -> https://example.com/path/ which is indicated as hreflang error.
+* [Bing Webmaster Tools](https://www.bing.com/webmasters/about)
+
 # Astro Starter Kit: Minimal
 
 ```sh
