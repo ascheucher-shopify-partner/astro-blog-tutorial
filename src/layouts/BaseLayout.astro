@@ -11,8 +11,12 @@ interface Props {
   pageTitle: string;
 }
 const { lang, langSwitchPath, pageTitle } = Astro.props;
+// TODO TBD: should I use a Astro Theme instead of my custom Tailwind UI built one? https://astro.build/themes/
 // TODO change the favicon to the logo
-// TODO remove logging for props
+// TODO Google Analytics - is there a module for Astro?
+// TODO Cookie Banner (which? own?)
+// TODO SEO fields: https://github.com/jonasmerlin/astro-seo
+// TODO console logging for props with a global switch. Place the switch in the astro.config.js?
 // TODO add logging in papertrail or bugsnag for client run code
 ---
 

@@ -78,8 +78,7 @@ export function getHrefLangLinks(createLinkRelHreflang: boolean,
   lang: string,
   postSlug: string,
   otherLang: string,
-  otherPostSlug: string | undefined,
-  infix: string
+  otherPostSlug: string | undefined
 ): any[] {
   if (!createLinkRelHreflang) {
     return [];

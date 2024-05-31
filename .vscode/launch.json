@@ -9,20 +9,6 @@
     },
     {
       "type": "chrome",
-      "request": "attach",
-      "name": "Attach Chrome against localhost:4321",
-      "url": "http://localhost:4321",
-      "webRoot": "${workspaceFolder}/src",
-      "sourceMapPathOverrides": {
-        "vite:///src/*": "${webRoot}/*"
-      },
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**"
-      ]
-    },
-    {
-      "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome against localhost:4321",
       "url": "http://localhost:4321",

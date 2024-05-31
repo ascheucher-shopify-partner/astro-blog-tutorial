@@ -2,16 +2,8 @@
 import { getCollection } from "astro:content";
 import { languages } from "@lib/i18n/ui";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import {
-  filterPostsForLang,
-  otherLanguage,
-  getPostsByIdAndLang,
-  needsHreflangLinks,
-  getHrefLangLinks,
-  getPostSlug,
-  type PostsByLang,
-  getOtherLangPost,
-} from "@lib/i18n/utils";
+import { type PostsByLang } from "@lib/i18n/utils";
+import * as I18nUtils from "@lib/i18n/utils";
 import type { Post } from "@content/config";
 
 import MarkdownPostLayout from "../../../layouts/MarkdownPostLayout.astro";
@@ -24,21 +16,21 @@ export async function getStaticPaths() {
 
   const supportedLanguages = Object.keys(languages);
   const blogPosts = await getCollection("posts");
-  const postsByIdAndLang = getPostsByIdAndLang(blogPosts);
+  const postsByIdAndLang = I18nUtils.getPostsByIdAndLang(blogPosts);
 
   const paths = supportedLanguages
     .map((lang: string) => {
-      return filterPostsForLang(blogPosts, lang).map((post) => {
+      return I18nUtils.filterPostsForLang(blogPosts, lang).map((post) => {
         // we don't use the Astro language fallback solution for not translated
         // blog lists, as we want to have a fallback in both directions.
-        const langPostSlug = getPostSlug(post);
+        const langPostSlug = I18nUtils.getPostSlug(post);
         const langPath = [
           getRelativeLocaleUrl(lang),
           "ecommerce-insights",
         ].join("/");
 
         // get slug for translated blog posts
-        const otherLang = otherLanguage(lang);
+        const otherLang = I18nUtils.otherLanguage(lang);
         // for no translation: use this the same slug for the translation.
         let otherLangPostSlug = langPostSlug;
         let otherLangPostPath = getRelativeLocaleUrl(
@@ -47,8 +39,8 @@ export async function getStaticPaths() {
         );
         if (hasPostTranslation(postsByIdAndLang, post)) {
           // overwrite with that slug
-          otherLangPostSlug = getPostSlug(
-            getOtherLangPost(postsByIdAndLang, post)
+          otherLangPostSlug = I18nUtils.getPostSlug(
+            I18nUtils.getOtherLangPost(postsByIdAndLang, post)
           );
           otherLangPostPath = getRelativeLocaleUrl(
             otherLang,
@@ -57,8 +49,8 @@ export async function getStaticPaths() {
         }
 
         // add the link rel="alternate" hreflang="x" href="y" tags for SEO if neccessary sdf
-        let hrefLangLinks = getHrefLangLinks(
-          needsHreflangLinks(langPostSlug, otherLangPostSlug),
+        let hrefLangLinks = I18nUtils.getHrefLangLinks(
+          I18nUtils.needsHreflangLinks(langPostSlug, otherLangPostSlug),
           lang,
           langPostSlug,
           otherLang,

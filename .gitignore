@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local .env files for local secrets: .env.local, .env.development.local, .env.test.local, .env.production.local
+# does it work with astro as well?
+# https://vitejs.dev/guide/env-and-mode.html#env-files
+# how to set the mode: https://vitejs.dev/guide/env-and-mode.html#node-env-and-modes
+**/*.local

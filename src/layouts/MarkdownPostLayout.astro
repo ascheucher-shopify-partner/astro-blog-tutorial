@@ -14,8 +14,7 @@ interface Props {
   hrefLangLinks: HrefLangLink[];
 }
 const { frontmatter, lang, langSwitchPath, hrefLangLinks } = Astro.props;
-// TODO Google Analytics
-// TODO Cookie Banner (which? own?)
+// TODO switch to MDX? Allows for React components in mardown posts
 // TODO SEO title & description. Generate from posting frontmatter title & description?
 // TODO deal with dates: https://docs.astro.build/en/guides/content-collections/#working-with-dates-in-the-frontmatter
 // TODO how to translate tags? just write the keys in the frontmatter and translate them in the template? use keys in slugs?

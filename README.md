@@ -22,6 +22,20 @@
   * test with the finished online version. GitHub pages seem to do a 301 redirect from https://example.com/path -> https://example.com/path/ which is indicated as hreflang error.
 * [Bing Webmaster Tools](https://www.bing.com/webmasters/about)
 
+## Future Possibilities for the page
+
+Reading this [blog post about Astro](https://www.eddyvinck.com/blog/what-is-astro/) gave some ideas:
+
+* use Solid.js instead of React. Sounds faster and simmilar enough to cause to much confusion now. Let's learn react first. :)
+* use [appwrite.io](https://appwrite.io/) as backend (DB, auth, endpoint functionality...) for dynamic functionality.
+* check out his Astro template for features like:
+  * multi author blog posts
+  * author system
+  * blog drafts
+  * MDX support
+  * [No BullShit TypeScript YouTube](https://www.youtube.com/playlist?list=PLNqp92_EXZBJYFrpEzdO2EapvU0GOJ09n) course by Jack Herrington
+  * [Totally Typescript Types course]() (by Matt Pocok [X](https://x.com/mattpocockuk?lang=en), [LinkedIn](https://www.linkedin.com/in/mapocock/?originalSubdomain=uk))
+
 # Astro Starter Kit: Minimal
 
 ```sh
