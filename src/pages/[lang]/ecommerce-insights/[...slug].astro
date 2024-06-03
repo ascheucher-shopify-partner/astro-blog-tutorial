@@ -17,6 +17,7 @@ export async function getStaticPaths() {
   const supportedLanguages = Object.keys(languages);
   const blogPosts = await getCollection("posts");
   const postsByIdAndLang = I18nUtils.getPostsByIdAndLang(blogPosts);
+  const blogPath = "ecommerce-insights";
 
   const paths = supportedLanguages
     .map((lang: string) => {
@@ -24,10 +25,7 @@ export async function getStaticPaths() {
         // we don't use the Astro language fallback solution for not translated
         // blog lists, as we want to have a fallback in both directions.
         const langPostSlug = I18nUtils.getPostSlug(post);
-        const langPath = [
-          getRelativeLocaleUrl(lang),
-          "ecommerce-insights",
-        ].join("/");
+        // const langPath = [getRelativeLocaleUrl(lang), blogPath].join("/");
 
         // get slug for translated blog posts
         const otherLang = I18nUtils.otherLanguage(lang);
@@ -35,7 +33,7 @@ export async function getStaticPaths() {
         let otherLangPostSlug = langPostSlug;
         let otherLangPostPath = getRelativeLocaleUrl(
           otherLang,
-          `ecommerce-insights/${langPostSlug}`
+          `${blogPath}/${langPostSlug}`
         );
         if (hasPostTranslation(postsByIdAndLang, post)) {
           // overwrite with that slug
@@ -44,7 +42,7 @@ export async function getStaticPaths() {
           );
           otherLangPostPath = getRelativeLocaleUrl(
             otherLang,
-            `ecommerce-insights/${otherLangPostSlug}`
+            `${blogPath}/${otherLangPostSlug}`
           );
         }
 
@@ -52,9 +50,9 @@ export async function getStaticPaths() {
         let hrefLangLinks = I18nUtils.getHrefLangLinks(
           I18nUtils.needsHreflangLinks(langPostSlug, otherLangPostSlug),
           lang,
-          langPostSlug,
+          `${blogPath}/${langPostSlug}`,
           otherLang,
-          otherLangPostSlug
+          `${blogPath}/${otherLangPostSlug}`
         );
 
         return {
