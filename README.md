@@ -8,6 +8,7 @@
   * blog posts
     * post without current lang versions will be listed & shown in the other language
 * Google / SEO optimisations
+  * Google Analytics
   * hreflang attributes
   * sitemap
   * robots.txt
