@@ -33,5 +33,5 @@ test.skip('test hreflang creation - populated and match the expecte URLs', () =>
       { lang: 'de', href: 'https://ascheucher-shopify-partner.github.io/astro-blog-tutorial/de/ecommerce-insights/lerne-astro' }
     ])
 
-  // FIXME: For the vitest, getAbsoluteLocaleUrl(...) ignores the baseUrl, for the `astro build` it ignores the ecommerce-insights part.
+  // FIXME: created a bug report: https://github.com/withastro/astro/issues/11175
 })
