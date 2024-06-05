@@ -20,15 +20,15 @@ dependencies:
   astro:
     specifier: ^4.9.2
     version: 4.9.2(typescript@5.4.5)
-  astro-google-analytics:
-    specifier: ^1.0.3
-    version: 1.0.3
   preact:
     specifier: ^10.22.0
     version: 10.22.0
   typescript:
     specifier: ^5.4.5
     version: 5.4.5
+  vanilla-cookieconsent:
+    specifier: ^3.0.1
+    version: 3.0.1
 
 devDependencies:
   vitest:
@@ -1603,10 +1603,6 @@ packages:
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
-
-  /astro-google-analytics@1.0.3:
-    resolution: {integrity: sha512-5bD7jA15yxVaUFVVEFG6KKMphYJ4AKP4+HSqCVBpTBnqh8LL0giTdAHpG9KJs3JaFbGQUTWP5Pqt8+twz7f55Q==}
-    dev: false
 
   /astro@4.9.2(typescript@5.4.5):
     resolution: {integrity: sha512-apzpRoISk6L8g99m3zKIW5SYxw2GhOju/1Gq0Ccf3SH+X2UcFXF+MTdxPOFl5yJUQg7X0qsVQDOIVf8zHRRKFg==}
@@ -4042,6 +4038,10 @@ packages:
       browserslist: 4.23.0
       escalade: 3.1.2
       picocolors: 1.0.1
+    dev: false
+
+  /vanilla-cookieconsent@3.0.1:
+    resolution: {integrity: sha512-gqc4x7O9t1I4xWr7x6/jtQWPr4PZK26SmeA0iyTv1WyoECfAGnu5JEOExmMEP+5Fz66AT9OiCBO3GII4wDQHLw==}
     dev: false
 
   /vfile-location@5.0.2:

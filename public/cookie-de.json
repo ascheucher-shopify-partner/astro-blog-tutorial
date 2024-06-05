@@ -1,0 +1,36 @@
+{
+  "consentModal": {
+    "title": "Wir verwenden cookies",
+    "description": "Cookie modal description",
+    "acceptAllBtn": "Alle akzeptieren",
+    "acceptNecessaryBtn": "Nur notwendige akzeptieren",
+    "showPreferencesBtn": "Einstellungen"
+  },
+  "preferencesModal": {
+    "title": "Cookie Einstellungen",
+    "acceptAllBtn": "Alle akzeptieren",
+    "acceptNecessaryBtn": "Nur Notwendige akzeptieren",
+    "savePreferencesBtn": "Auswahl akzeptieren",
+    "closeIconLabel": "Dialog schliessen",
+    "sections": [
+      {
+        "title": "What the cookies?",
+        "description": "Her damit!"
+      },
+      {
+        "title": "Absolut notwendige cookies",
+        "description": "Diese Cookies sind essentiell notwendig, damit die Webseite funktioniert und könne nicht deaktiviert werden.",
+        "linkedCategory": "notwendig"
+      },
+      {
+        "title": "Homepage Verhalten und Analyse",
+        "description": "Diese Cookies sammeln Informationen über deine Verwendung der Webseite. Alle Daten sind anonymisiert und können nicht zu dir zurückverfolgt werden.",
+        "linkedCategory": "analyse"
+      },
+      {
+        "title": "Mehr Information",
+        "description": "Für weitere Anfragen zum Thema AGB, Datenschutzerklärung und Cookies, kontaktieren sie uns bitte. "
+      }
+    ]
+  }
+}
