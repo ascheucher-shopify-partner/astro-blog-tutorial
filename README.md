@@ -1,5 +1,9 @@
 # SaaSQuadrat Homepage / Blog Template
 
+## Astro VSC Project Setups
+
+A lot of tips on how to setup an Astro project in this [Reddit posting and answers](https://www.reddit.com/r/astrojs/comments/1b69spo/what_does_your_astro_development_setup_look_like/).
+
 ## Features
 
 * i18n
