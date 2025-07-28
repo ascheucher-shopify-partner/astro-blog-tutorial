@@ -20,12 +20,12 @@ CookieConsent.run({
     translations: {
       // TODO bessere Beschreibung für consentModal.description EN & DE
       en: async () => {
-        const res = await fetch('cookie-en.json');
+        const res = await fetch('/astro-blog-tutorial/cookie-en.json');
         return await res.json();
       },
       // FIXME settings dialog in german is broken. Filed a bug: https://github.com/orestbida/cookieconsent/issues/693
       de: async () => {
-        const res = await fetch('cookie-de.json');
+        const res = await fetch('/astro-blog-tutorial/cookie-de.json');
         return await res.json();
       }
     }
