@@ -21,6 +21,10 @@ A lot of tips on how to setup an Astro project in this [Reddit posting and answe
   * markdown post
   * 
 
+## Get Images from
+
+* [Little Tinies](https://huggingface.co/alvdansen/littletinies) cute a bit dark drawing style
+
 ## Checks to run through
 
 * [i18n hreflang check](https://app.hreflang.org/)
