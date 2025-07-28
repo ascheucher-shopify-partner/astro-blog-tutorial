@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { languages } from "@lib/i18n/ui";
-import { filterPostsForLang, otherLanguage } from "@lib/i18n/utils";
+import { filterPostsForLang, otherLanguage, useTranslations } from "@lib/i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
@@ -26,17 +26,17 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const pageTitle = "Blog - SaaSQuadrat";
-
-// deduplicate posts. Only one language per post.
 const { lang } = Astro.params;
 const { otherLangPath } = Astro.props;
+
+const t = useTranslations(lang as 'en' | 'de');
+const pageTitle = t('page.blog');
 const allPosts = await getCollection("posts");
 const langPosts = filterPostsForLang(allPosts, lang);
 ---
 
 <BaseLayout lang={lang} langSwitchPath={otherLangPath} pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
+  <p>{t('blog.description')}</p>
   <ul>
     {
       langPosts.map((post) => {

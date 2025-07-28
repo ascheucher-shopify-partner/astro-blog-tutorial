@@ -1,12 +1,10 @@
 ---
 import { languages } from "@lib/i18n/ui";
-import { otherLanguage } from "@lib/i18n/utils";
+import { otherLanguage, useTranslations } from "@lib/i18n/utils";
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 import BaseLayout from "@layouts/BaseLayout.astro";
-
-const pageTitle = "Tag Index";
 
 export async function getStaticPaths() {
   const langKeys = Object.keys(languages);
@@ -35,6 +33,9 @@ const uniqueTags = [
 
 const { lang } = Astro.params;
 const { otherLangPath } = Astro.props;
+
+const t = useTranslations(lang as 'en' | 'de');
+const pageTitle = t('page.tags');
 ---
 
 <BaseLayout lang={lang} langSwitchPath={otherLangPath} pageTitle={pageTitle}>

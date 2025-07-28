@@ -1,0 +1,38 @@
+{
+  "nav.home": "Home",
+  "nav.about": "About",
+  "nav.shopify-insights": "Shopify Insights",
+  "nav.twitter": "Twitter",
+  "nav.tags": "Tags",
+  
+  "page.about": "About Me",
+  "page.contact": "Contact - SaaSQuadrat e.U.",
+  "page.blog": "Blog - SaaSQuadrat",
+  "page.tags": "Tag Index",
+  
+  "about.facts": "Here are a few facts about me:",
+  "about.name": "My name is",
+  "about.location": "I live in",
+  "about.occupation": "and I work as a",
+  "about.hobbies": "Two of my hobbies are:",
+  "about.skills": "My skills are:",
+  "about.happy": "I am happy to be learning Astro!",
+  "about.finished": "I finished this tutorial!",
+  "about.goal": "My goal is to finish in 3 days.",
+  "about.goal.not": "My goal is not 3 days.",
+  
+  "home.subtitle": "My awesome blog subtitle",
+  
+  "blog.description": "This is where I will post about my journey learning Astro.",
+  
+  "contact.info": "// TODO contact information",
+  
+  "post.written-by": "Written by:",
+  
+  "greeting.hi": "Hi",
+  "greeting.hello": "Hello",
+  "greeting.howdy": "Howdy",
+  "greeting.hey": "Hey there",
+  "greeting.griazi": "Griazi",
+  "greeting.servus": "Servus"
+}

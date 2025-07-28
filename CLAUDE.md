@@ -58,6 +58,53 @@ This is an **Astro-based multilingual blog/homepage** for SaaSQuadrat with the f
 - **Vitest**: Configured for unit testing with Astro integration
 - **Test files**: Located alongside source files (e.g., `src/lib/i18n/utils.test.ts`)
 
+## TODO Items
+
+Outstanding tasks and improvements identified in the codebase:
+
+### Configuration & Deployment
+
+- **astro.config.mjs:11** - Change site URL to real domain for sitemap generation
+- **src/layouts/BaseLayout.astro:16** - Change favicon to the logo
+
+### Internationalization & Content
+
+- **src/pages/[lang]/contact/index.astro:26** - Translate page titles
+- **src/pages/[lang]/contact/index.astro:35** - Add contact information
+- **src/pages/index.astro:10** - Use client's browser requested language for automatic locale detection
+- **src/pages/[lang]/ecommerce-insights/[...slug].astro:80** - Add Google Translate button for blog posts where translation is unavailable
+- **src/layouts/MarkdownPostLayout.astro:20** - Implement tag translation system
+- **src/layouts/MarkdownPostLayout.astro:21** - Add date formatting for blog post frontmatter
+
+### Blog & Content Management
+
+- **src/layouts/MarkdownPostLayout.astro:17** - Consider switching to MDX for React components in markdown posts
+- **src/layouts/MarkdownPostLayout.astro:18** - Generate SEO title & description from posting frontmatter
+- **src/layouts/MarkdownPostLayout.astro:19** - Implement proper date handling in frontmatter
+- **src/layouts/MarkdownPostLayout.astro:22** - Add pagination for blog posts
+
+### TypeScript & Code Quality
+
+- **src/layouts/MarkdownPostLayout.astro:11** - Fix frontmatter type definition
+- **src/lib/i18n/utils.ts:22** - Fix types in i18n utilities
+- **src/pages/index.astro:9** - Implement TypeScript type tips from Astro documentation
+
+### UI & UX Enhancements
+
+- **src/layouts/BaseLayout.astro:15** - Consider using Astro Theme instead of custom Tailwind UI
+- **src/layouts/BaseLayout.astro:19** - Implement SEO fields using astro-seo
+- **public/cookieconsent-config.js:21** - Improve consent modal description for EN & DE
+
+### Development & Monitoring
+
+- **src/layouts/BaseLayout.astro:20** - Add console logging with global switch in astro.config.js
+- **src/layouts/BaseLayout.astro:21** - Add client-side logging with Papertrail or Bugsnag
+
+### Known Issues (FIXME)
+
+- **public/cookieconsent-config.js:26** - German settings dialog is broken ([Bug report](https://github.com/orestbida/cookieconsent/issues/693))
+- **src/lib/i18n/utils.test.ts:36** - Astro testing issue ([Bug report](https://github.com/withastro/astro/issues/11175))
+
 ## Important Notes
 
 - The site is configured for GitHub Pages deployment with base path `/astro-blog-tutorial`

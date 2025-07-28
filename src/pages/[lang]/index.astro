@@ -1,6 +1,6 @@
 ---
 import { languages } from "@lib/i18n/ui";
-import { otherLanguage } from "@lib/i18n/utils";
+import { otherLanguage, useTranslations } from "@lib/i18n/utils";
 import { getRelativeLocaleUrl } from "astro/virtual-modules/i18n.js";
 
 import Greeting from "@components/Greeting";
@@ -26,12 +26,14 @@ export async function getStaticPaths() {
 }
 const { lang } = Astro.params;
 const { otherLangPath } = Astro.props;
+
+const t = useTranslations(lang as 'en' | 'de');
 ---
 
 <BaseLayout lang={lang} langSwitchPath={otherLangPath} pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
+  <h2>{t('home.subtitle')}</h2>
   <Greeting
     client:load
-    messages={["Hi", "Hello", "Howdy", "Hey there", "Griazi", "Servus"]}
+    messages={[t('greeting.hi'), t('greeting.hello'), t('greeting.howdy'), t('greeting.hey'), t('greeting.griazi'), t('greeting.servus')]}
   />
 </BaseLayout>

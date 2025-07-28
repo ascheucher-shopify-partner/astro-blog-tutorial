@@ -7,17 +7,10 @@ export const languages = {
 // See comment above.
 export const defaultLang = 'en';
 
+import enTranslations from './en.json';
+import deTranslations from './de.json';
+
 export const ui = {
-  en: {
-    'nav.home': 'Home',
-    'nav.about': 'About',
-    'nav.shopify-insights': 'Shopify Insights',
-    'nav.twitter': 'Twitter',
-    'nav.tags': 'Tags'
-  },
-  de: {
-    'nav.home': 'Home',
-    'nav.about': 'Über',
-    'nav.shopify-insights': 'Shopify Nuggets',
-  },
+  en: enTranslations,
+  de: deTranslations,
 } as const;

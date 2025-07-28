@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { languages } from "@lib/i18n/ui";
-import { otherLanguage } from "@lib/i18n/utils";
+import { otherLanguage, useTranslations } from "@lib/i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 let baseUrl = import.meta.env.BASE_URL;
@@ -23,14 +23,13 @@ export async function getStaticPaths() {
   return paths;
 }
 
-// TODO translate page titles
-const pageTitle = "Kontakt - SaaSQuadrat e.U.";
-
-// deduplicate posts. Only one language per post.
 const { lang } = Astro.params;
 const { otherLangPath } = Astro.props;
+
+const t = useTranslations(lang as 'en' | 'de');
+const pageTitle = t('page.contact');
 ---
 
 <BaseLayout lang={lang} langSwitchPath={otherLangPath} pageTitle={pageTitle}>
-  <p>// TODO contact information</p>
+  <p>{t('contact.info')}</p>
 </BaseLayout>

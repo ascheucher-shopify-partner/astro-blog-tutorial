@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@lib/i18n/utils";
 
 import BaseLayout from "./BaseLayout.astro";
 
@@ -14,6 +15,8 @@ interface Props {
   hrefLangLinks: HrefLangLink[];
 }
 const { frontmatter, lang, langSwitchPath, hrefLangLinks } = Astro.props;
+
+const t = useTranslations(lang as 'en' | 'de');
 // TODO switch to MDX? Allows for React components in mardown posts
 // TODO SEO title & description. Generate from posting frontmatter title & description?
 // TODO deal with dates: https://docs.astro.build/en/guides/content-collections/#working-with-dates-in-the-frontmatter
@@ -39,7 +42,7 @@ const { frontmatter, lang, langSwitchPath, hrefLangLinks } = Astro.props;
   }
   <p>{frontmatter.pubDate.toISOString().slice(0, 10)}</p>
   <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
+  <p>{t('post.written-by')} {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="600" alt={frontmatter.image.alt} />
   <slot />
   <div class="tags">

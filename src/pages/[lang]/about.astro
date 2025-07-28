@@ -1,11 +1,9 @@
 ---
 import { languages } from "@lib/i18n/ui";
-import { otherLanguage } from "@lib/i18n/utils";
+import { otherLanguage, useTranslations } from "@lib/i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
-const pageTitle = "About Me";
 
 export async function getStaticPaths() {
   const langKeys = Object.keys(languages);
@@ -25,6 +23,9 @@ export async function getStaticPaths() {
 }
 const { lang } = Astro.params;
 const { otherLangPath } = Astro.props;
+
+const t = useTranslations(lang as 'en' | 'de');
+const pageTitle = t('page.about');
 
 const identity = {
   firstName: "Sarah",
@@ -58,31 +59,31 @@ console.log(`about - lang: ${lang}, otherLangPath: ${otherLangPath}`);
       text-transform: var(--textCase);
     }
   </style>
-  <p>Here are a few facts about me:</p>
+  <p>{t('about.facts')}</p>
   <ul>
-    <li>My name is {identity.firstName}.</li>
-    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+    <li>{t('about.name')} {identity.firstName}.</li>
+    <li>{t('about.location')} {identity.country} {t('about.occupation')} {identity.occupation}.</li>
     {
       identity.hobbies.length >= 2 && (
         <li>
-          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+          {t('about.hobbies')} {identity.hobbies[0]} and {identity.hobbies[1]}
         </li>
       )
     }
   </ul>
-  <p>My skills are:</p>
+  <p>{t('about.skills')}</p>
   <ul>
     {skills.map((skill) => <li class="skill">{skill}</li>)}
   </ul>
-  {happy && <p>I am happy to be learning Astro!</p>}
+  {happy && <p>{t('about.happy')}</p>}
 
-  {finished && <p>I finished this tutorial!</p>}
+  {finished && <p>{t('about.finished')}</p>}
 
   {
     goal === 3 ? (
-      <p>My goal is to finish in 3 days.</p>
+      <p>{t('about.goal')}</p>
     ) : (
-      <p>My goal is not 3 days.</p>
+      <p>{t('about.goal.not')}</p>
     )
   }
 </BaseLayout>
