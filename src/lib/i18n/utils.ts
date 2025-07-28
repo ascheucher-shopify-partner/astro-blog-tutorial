@@ -1,4 +1,4 @@
-import { getAbsoluteLocaleUrl, getRelativeLocaleUrl } from 'astro:i18n';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import { ui, languages, defaultLang } from './ui';
 import type { Post } from '@content/config';
 

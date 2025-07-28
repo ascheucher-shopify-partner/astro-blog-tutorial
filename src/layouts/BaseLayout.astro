@@ -65,6 +65,6 @@ const { lang, langSwitchPath, pageTitle } = Astro.props;
     <script>
       import "../scripts/menu.js";
     </script>
-    <script type="module" src={`${baseUrl}/cookieconsent-config.js`}></script>
+    <script is:inline type="module" src={`${baseUrl}/cookieconsent-config.js`}></script>
   </body>
 </html>
