@@ -23,7 +23,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-let baseUrl = import.meta.env.BASE_URL;
 
 const allPosts: any = await getCollection("posts");
 

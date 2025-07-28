@@ -1,5 +1,5 @@
 // Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection, type CollectionEntry } from "astro:content";
 
 // Define a `type` and `schema` for each collection
 // reference: https://zod.dev/?id=guides-and-concepts
@@ -21,18 +21,10 @@ const postsCollection = defineCollection({
   schema: postsZodSchema
 });
 
-// get the type of the Post
-type Post = {
-  id: string
-  slug: string
-  body: string;
-  collection: string
-  data: z.infer<typeof postsZodSchema>
-}
-
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   posts: postsCollection,
 }
 
-export type { Post }
+// Use CollectionEntry type for proper typing including render() method
+export type Post = CollectionEntry<'posts'>;

@@ -7,7 +7,6 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import BlogPostLi from "@components/BlogPostLi.astro";
 
-let baseUrl = import.meta.env.BASE_URL;
 
 export async function getStaticPaths() {
   const langKeys = Object.keys(languages);
